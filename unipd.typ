@@ -1,0 +1,80 @@
+#let unipd-theme() = data => {
+  // From `typst-slides`
+  let section = state("section", none)
+  let logical-slide = counter("logical-slide")
+
+  let unipd-red = rgb(155, 0, 20)
+  let unipd-gray = rgb(72, 79, 89)
+
+  let title-slide(slide-info, bodies) = {
+    // Background
+    place(image("bg.svg", width: 100%))
+    place(
+      bottom + right, dx: -5%, dy: -5%,
+      image("logo_text.png", width: 30%)
+    )
+
+    // Normalize data
+    let authors = data.authors
+    if type(authors) == "string" {
+      authors = (authors,)
+    }
+    let date = data.date
+    if type(date) == "string" {
+      date = (date,)
+    }
+    if type(date) == "none" {
+      date = ()
+    }
+
+    // Title, subtitle, author and date
+    v(20%)
+    align(center, text(size: 46pt, fill: white, data.title))
+    align(center, text(size: 30pt, fill: white, data.subtitle))
+    v(5%)
+    (authors + date)
+        .map(line => h(7.5%) + text(size: 24pt, fill: white, line))
+        .join(linebreak())
+  }
+
+  let default(slide-info, bodies) = {
+    if bodies.len() != 1 {
+      panic("unipd theme only supports one body per slide")
+    }
+
+    // Header
+    place(rect(width: 100%, height: 12%, fill: unipd-red))
+    place(right, dx: -2%, dy: 1%, image("logo_text_white.png", height: 10%))
+    // Section name in header
+    place(dx: 2%, dy: 4.5%, text(size: 34pt, fill: white, section.display()))
+    // Skip header
+    v(15%)
+
+    // Footer
+    place(bottom, image("bg_wave.svg", width: 100%))
+    // Slide number in the footer
+    place(
+      bottom + right, dx: -2.5%, dy: -2.5%,
+      text(size: 18pt, fill: unipd-red.lighten(50%), logical-slide.display("1 of 1", both: true))
+    )
+
+    if "title" in slide-info {
+      v(7%)
+      block(
+        width: 100%, inset: (x: 4.5%, y: -.5em), breakable: false,
+        outset: 0em,
+        heading(level: 1, text(unipd-red)[#slide-info.title])
+      )
+	    v(.7em)
+    }
+
+    v(1fr)
+    block(
+      width: 100%, inset: (x: 2em), breakable: false, outset: 0em,
+      bodies.first()
+    )
+    v(2fr)
+  }
+
+  ("default": default, "title slide": title-slide)
+}
