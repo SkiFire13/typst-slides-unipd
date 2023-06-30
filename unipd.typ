@@ -15,6 +15,10 @@
     )
 
     // Normalize data
+    let subtitle = data.subtitle
+    if type(subtitle) == "none" {
+      subtitle = ""
+    }
     let authors = data.authors
     if type(authors) == "string" {
       authors = (authors,)
@@ -30,7 +34,7 @@
     // Title, subtitle, author and date
     v(20%)
     align(center, text(size: 46pt, fill: white, data.title))
-    align(center, text(size: 30pt, fill: white, data.subtitle))
+    align(center, text(size: 30pt, fill: white, subtitle))
     v(5%)
     (authors + date)
         .map(line => h(7.5%) + text(size: 24pt, fill: white, line))
