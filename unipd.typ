@@ -1,10 +1,10 @@
+#let unipd-red = rgb(155, 0, 20)
+#let unipd-gray = rgb(72, 79, 89)
+
 #let unipd-theme() = data => {
   // From `typst-slides`
   let section = state("section", none)
   let logical-slide = counter("logical-slide")
-
-  let unipd-red = rgb(155, 0, 20)
-  let unipd-gray = rgb(72, 79, 89)
 
   let title-slide(slide-info, bodies) = {
     // Background
