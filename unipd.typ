@@ -42,9 +42,6 @@
   }
 
   let default(slide-info, bodies) = {
-    if bodies.len() != 1 {
-      panic("unipd theme only supports one body per slide")
-    }
 
     // Header
     place(rect(width: 100%, height: 12%, fill: unipd-red))
@@ -61,6 +58,21 @@
       bottom + right, dx: -2.5%, dy: -2.5%,
       text(size: 18pt, fill: unipd-red.lighten(50%), logical-slide.display("1 of 1", both: true))
     )
+
+    if bodies.len() == 0 {
+      if "title" in slide-info {
+        v(-7%)
+        align(
+          center + horizon,
+          heading(level: 1, text(unipd-red)[#slide-info.title])
+        )
+      }
+      return
+    }
+
+    if bodies.len() != 1 {
+      panic("unipd theme only supports one body per slide")
+    }
 
     if "title" in slide-info {
       v(7%)
