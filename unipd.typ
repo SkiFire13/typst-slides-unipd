@@ -93,7 +93,7 @@
     v(2fr)
   }
 
-    let wake-up(slide-info, bodies) = {
+  let wake-up(slide-info, bodies) = {
     if bodies.len() != 1 {
       panic("unipd theme only supports one body per slide")
     }
