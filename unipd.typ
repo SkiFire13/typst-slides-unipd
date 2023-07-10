@@ -1,5 +1,6 @@
 #let unipd-red = rgb(155, 0, 20)
 #let unipd-gray = rgb(72, 79, 89)
+#let unipd-light-gray = rgb(237, 237, 238)
 
 #let unipd-theme() = data => {
   // From `typst-slides`
@@ -92,7 +93,7 @@
     v(2fr)
   }
 
-  let wake-up(slide-info, bodies) = {
+    let wake-up(slide-info, bodies) = {
     if bodies.len() != 1 {
       panic("unipd theme only supports one body per slide")
     }
@@ -115,5 +116,53 @@
     "wake up": wake-up,
     "full": wake-up,
     "end": wake-up,
+  )
+}
+
+#let normal-block(title, body) = {
+  v(1em)
+  align(center, 
+    box(
+      width: 80%, outset: 1em, fill: unipd-gray,
+      align(left, heading(level: 2, text(fill: white)[#title]))
+    )
+  )
+  align(center, 
+    box(
+      width: 80%, outset: 1em, fill: unipd-light-gray,
+      align(left, body)
+    )
+  )
+}
+
+#let alert-block(title, body) = {
+  v(1em)
+  align(center, 
+    box(
+      width: 80%, outset: 1em, fill: unipd-red,
+      align(left, heading(level: 2, text(fill: white)[#title]))
+    )
+  )
+  align(center, 
+    box(
+      width: 80%, outset: 1em, fill: unipd-light-gray,
+      align(left, body)
+    )
+  )
+}
+
+#let example-block(title, body) = {
+  v(1em)
+  align(center, 
+    box(
+      width: 80%, outset: 1em, fill: rgb(0, 128, 0),
+      align(left, heading(level: 2, text(fill: white)[#title]))
+    )
+  )
+  align(center, 
+    box(
+      width: 80%, outset: 1em, fill: unipd-light-gray,
+      align(left, body)
+    )
   )
 }
