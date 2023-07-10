@@ -102,9 +102,18 @@
       width: 100%, height: 100%, fill: unipd-red, breakable: false,
       outset: 0pt, inset: 0pt,
     ))
-    
+
     align(center + horizon, text(size: 1.5em, fill: white, bodies.first()))
   }
 
-  ("default": default, "title slide": title-slide, "wake up": wake-up)
+  (
+    "default": default,
+
+    "title slide": title-slide,
+    "title": title-slide,
+
+    "wake up": wake-up,
+    "full": wake-up,
+    "end": wake-up,
+  )
 }
