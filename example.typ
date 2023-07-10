@@ -1,45 +1,52 @@
 #import "slides.typ": *
-#import "themes/unipd.typ": *
+#import "unipd.typ": *
 
 #show: slides.with(
-    authors: "Pippo",
-    title: "Pluto",
+    authors: "Foo",
+    title: "Bar",
     subtitle: lorem(20),
-    date: "Luglio 2023",
+    date: "July 2023",
     aspect-ratio: "4-3",
     theme: unipd-theme(),
 )
 
-#set text(font: "Inria Sans", size: 25pt)
+#set text(font: (
+  "Noto Sans",
+  "Segoe UI",
+  "roboto",
+  "Helvetica Neue",
+  "Cantarell",
+  "sans-serif",
+))
 
 #slide(theme-variant: "title slide")
 
-#new-section("Fantasia piccante")
+#new-section("Foobar")
 
-
-#slide(title: "Testo statico")[
+#slide(title: "Static text")[
   ```sh
   #!/bin/bash
   sleep 2
   echo "Hello World"
   exit 0
+  ```
 ]
 
-#slide(title: "Testo dinamico")[
+#slide(title: "Dynamic text")[
   #lorem(20)\
-  #uncover("2-")[Questo appare dopo.]
+  #uncover("2-")[This appears after one slide]
 ]
 
-#new-section("Conclusione")
+#new-section("Conclusions")
 
-#slide(title: "Sono 2.50€")[
-  _Ecco a lei_\
-  *Arrivederci*\
-  `Ci si vede`
+#slide(title: "Qux")[
+  _baz_\
+  *Fizz*\
+  `Fuzz`
 ]
 
 #slide()[
-  #normal-block[title][body]
-  #alert-block[title][body]
-  #example-block[title][body]
+  #normal-block[Normal block][body]
+  #alert-block[Alert block][body]
+  #example-block[Example block][body]
 ]
