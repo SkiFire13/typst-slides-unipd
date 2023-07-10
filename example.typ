@@ -19,11 +19,10 @@
 
 #slide(title: "Testo statico")[
   ```sh
-    #!/bin/bash
-    sleep 2
-    echo "Hello World"
-    exit 0
-  ```
+  #!/bin/bash
+  sleep 2
+  echo "Hello World"
+  exit 0
 ]
 
 #slide(title: "Testo dinamico")[
