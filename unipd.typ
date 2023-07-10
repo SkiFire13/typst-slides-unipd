@@ -125,50 +125,25 @@
   )
 }
 
-#let normal-block(title, body) = {
-  v(1em)
-  align(center, 
-    box(
-      width: 80%, outset: 1em, fill: unipd-gray,
-      align(left, heading(level: 2, text(fill: white)[#title]))
-    )
-  )
-  align(center, 
-    box(
-      width: 80%, outset: 1em, fill: unipd-light-gray,
-      align(left, body)
-    )
-  )
-}
+#let (normal-block, alert-block, example-block) = {
+  let make_block_fn(header-color) = (title, body) => {
+    align(center, box(width: 85%, stack(dir: ttb,
+      box(
+        width: 100%, inset: 0.5em, outset: 0em,
+        fill: header-color, stroke: black,
+        align(left, heading(level: 2, text(fill: white)[#title]))
+      ),
+      box(
+        width: 100%, inset: 1em, outset: 0em, fill: unipd-light-gray,
+        stroke: black,
+        align(left, body)
+      )
+    )))
+  }
 
-#let alert-block(title, body) = {
-  v(1em)
-  align(center, 
-    box(
-      width: 80%, outset: 1em, fill: unipd-red,
-      align(left, heading(level: 2, text(fill: white)[#title]))
-    )
-  )
-  align(center, 
-    box(
-      width: 80%, outset: 1em, fill: unipd-light-gray,
-      align(left, body)
-    )
-  )
-}
-
-#let example-block(title, body) = {
-  v(1em)
-  align(center, 
-    box(
-      width: 80%, outset: 1em, fill: rgb(0, 128, 0),
-      align(left, heading(level: 2, text(fill: white)[#title]))
-    )
-  )
-  align(center, 
-    box(
-      width: 80%, outset: 1em, fill: unipd-light-gray,
-      align(left, body)
-    )
+  (
+    make_block_fn(unipd-gray),
+    make_block_fn(unipd-red),
+    make_block_fn(rgb(0, 128, 0)),
   )
 }
