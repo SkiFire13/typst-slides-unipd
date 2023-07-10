@@ -33,8 +33,14 @@
 
     // Title, subtitle, author and date
     v(20%)
-    align(center, text(size: 46pt, fill: white, data.title))
-    align(center, text(size: 30pt, fill: white, subtitle))
+    align(
+      center,
+      box(inset: (x: 2em), text(size: 46pt, fill: white, data.title))
+    )
+    align(
+      center,
+      box(inset: (x: 2em), text(size: 30pt, fill: white, subtitle))
+    )
     v(5%)
     (authors + date)
         .map(line => h(7.5%) + text(size: 24pt, fill: white, line))
