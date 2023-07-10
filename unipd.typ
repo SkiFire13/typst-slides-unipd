@@ -92,5 +92,19 @@
     v(2fr)
   }
 
-  ("default": default, "title slide": title-slide)
+  let wake-up(slide-info, bodies) = {
+    if bodies.len() != 1 {
+      panic("unipd theme only supports one body per slide")
+    }
+
+    // Background
+    place(block(
+      width: 100%, height: 100%, fill: unipd-red, breakable: false,
+      outset: 0pt, inset: 0pt,
+    ))
+    
+    align(center + horizon, text(size: 1.5em, fill: white, bodies.first()))
+  }
+
+  ("default": default, "title slide": title-slide, "wake up": wake-up)
 }
