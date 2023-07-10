@@ -6,6 +6,7 @@
     title: "Pluto",
     subtitle: lorem(20),
     date: "Luglio 2023",
+    aspect-ratio: "4-3",
     theme: unipd-theme(),
 )
 
