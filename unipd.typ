@@ -113,6 +113,14 @@
     align(center + horizon, text(size: 1.5em, fill: white, bodies.first()))
   }
 
+  let table-of-contents(slide-info, bodies) = {
+    default(slide-info, bodies)
+    box(
+      width: 100%, inset: (x: 2em), outset: 0em,
+      align(center, outline(title: text(unipd-red)[Table of contents]))
+    )
+  }
+
   (
     "default": default,
 
@@ -122,6 +130,8 @@
     "wake up": wake-up,
     "full": wake-up,
     "end": wake-up,
+
+    "table of contents": table-of-contents,
   )
 }
 
@@ -131,7 +141,7 @@
       box(
         width: 100%, inset: 0.5em, outset: 0em,
         fill: header-color, stroke: black,
-        align(left, heading(level: 2, text(fill: white)[#title]))
+        align(left, heading(level: 2, text(fill: white)[#title], outlined: false))
       ),
       box(
         width: 100%, inset: 1em, outset: 0em, fill: unipd-light-gray,
