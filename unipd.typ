@@ -77,10 +77,6 @@
       return
     }
 
-    if bodies.len() != 1 {
-      panic("unipd theme only supports one body per slide")
-    }
-
     if "title" in slide-info {
       v(7%)
       block(
@@ -91,12 +87,11 @@
 	    v(.7em)
     }
 
-    v(1fr)
-    block(
-      width: 100%, inset: (x: 2em), breakable: false, outset: 0em,
-      bodies.first()
-    )
-    v(2fr)
+    block(width: 100%, inset: (x: 2em), grid(
+      columns: (1fr,) * bodies.len(),
+      column-gutter: 2em,
+      ..bodies.map(body => v(1fr) + body + v(2fr))
+    ))
   }
 
   let wake-up(slide-info, bodies) = {
