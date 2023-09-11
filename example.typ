@@ -23,6 +23,8 @@
 
 #new-section("Foobar")
 
+#slide(theme-variant: "table of contents")
+
 #slide(title: "Static text")[
   ```sh
   #!/bin/bash
