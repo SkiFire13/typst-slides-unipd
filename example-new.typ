@@ -1,27 +1,16 @@
 #import "@preview/polylux:0.3.1": *
 #import "unipd.typ": *
 
-#show: slides.with(
-    authors: "Foo",
-    title: "Bar",
-    subtitle: lorem(20),
-    date: "July 2023",
-    aspect-ratio: "4-3",
-    theme: unipd-theme(),
+#show: unipd-theme
+
+#title-slide(
+  authors: "Foo",
+  title: "Bar",
+  subtitle: lorem(20),
+  date: "July 2023",
 )
 
-#set text(font: (
-  "Noto Sans",
-  "Segoe UI",
-  "roboto",
-  "Helvetica Neue",
-  "Cantarell",
-  "sans-serif",
-))
-
-#slide(theme-variant: "title slide")
-
-#new-section("Foobar")
+#new-section-slide("Foobar")
 
 #slide(title: "Static text")[
   ```sh
@@ -37,7 +26,7 @@
   #uncover("2-")[This appears after one slide]
 ]
 
-#new-section("Conclusions")
+#new-section-slide("Conclusions")
 
 #slide(title: "Qux")[
   _baz_\
