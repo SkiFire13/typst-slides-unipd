@@ -1,29 +1,20 @@
 #import "@preview/polylux:0.3.1": *
 #import "unipd.typ": *
 
-#show: slides.with(
-    authors: "Foo",
-    title: "Bar",
-    subtitle: lorem(20),
-    date: "July 2023",
-    aspect-ratio: "4-3",
-    theme: unipd-theme(),
+#show: unipd-theme
+
+#title-slide(
+  authors: "Me and myself",
+  title: "Some kinda short title",
+  subtitle: lorem(12),
+  date: "February 2024",
 )
 
-#set text(font: (
-  "Noto Sans",
-  "Segoe UI",
-  "roboto",
-  "Helvetica Neue",
-  "Cantarell",
-  "sans-serif",
-))
-
-#slide(theme-variant: "title slide")
-
-#new-section("Foobar")
+#new-section-slide("Introduction")
 
 #slide(title: "Static text")[
+  Here's some code:
+
   ```sh
   #!/bin/bash
   sleep 2
@@ -33,11 +24,12 @@
 ]
 
 #slide(title: "Dynamic text")[
-  #lorem(20)\
+  #lorem(20)
+
   #uncover("2-")[This appears after one slide]
 ]
 
-#new-section("Conclusions")
+#new-section-slide("Conclusions")
 
 #slide(title: "Qux")[
   _baz_\
@@ -48,5 +40,13 @@
 #slide()[
   #normal-block[Normal block][body]
   #alert-block[Alert block][body]
-  #example-block[Example block][body]
+  #example-block[Example block][
+    body
+
+    but a bit longer
+  ]
+]
+
+#filled-slide[
+  Thank you for your attention
 ]
