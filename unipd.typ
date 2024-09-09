@@ -30,6 +30,7 @@
   show heading.where(level: 2): set text(fill: palette.main)
   show heading.where(level: 2): it => it + v(1em)
   set list(marker: text("•", fill: palette.main.darken(20%)))
+  set list(indent: 1em)
 
   palette-state.update(palette)
   body
@@ -80,7 +81,7 @@
   place(rect(width: 100%, height: 12%, fill: palette.main))
   place(right, dx: -2%, dy: 1%, image(palette.header-logo, height: 10%))
   // Section name in header
-  place(dx: 2%, dy: 4.5%, text(size: 34pt, fill: white, utils.current-section))
+  place(dx: 2.5%, dy: 3.5%, text(size: 46pt, fill: white, utils.current-section))
 })
 
 #let footer = with-palette(palette => {
@@ -113,7 +114,7 @@
   }
 
   v(1fr)
-  block(width: 100%, inset: (x: 2em), body)
+  block(width: 100%, inset: (x: 3em), body)
   v(2fr)
 })
 
