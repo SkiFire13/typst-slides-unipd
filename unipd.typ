@@ -85,7 +85,7 @@
 })
 
 #let footer = with-palette(palette => {
-  place(bottom, image(palette.footer-wave, width: 100%))
+  place(bottom, dy: 1pt, image(palette.footer-wave, width: 100%))
   // Slide number in the footer
   place(
     bottom + right, dx: -2.5%, dy: -2.5%,
