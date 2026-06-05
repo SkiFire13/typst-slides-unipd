@@ -1,4 +1,5 @@
-#import "@preview/polylux:0.3.1": logic, utils
+#import "@preview/polylux:0.4.0"
+#import polylux: toolbox
 
 #let unipd-palette = (
   main: rgb(155, 0, 20),
@@ -11,7 +12,7 @@
 )
 
 #let palette-state = state("unipd-theme-palette", unipd-palette)
-#let with-palette = f => locate(loc => f(palette-state.at(loc)))
+#let with-palette = f => context f(palette-state.at(here()))
 
 #let title-background = with-palette(palette => {
   place(image(palette.title-background, width: 100%, fit: "stretch"))
@@ -40,7 +41,7 @@
   subtitle: none,
   authors: none,
   date: none,
-) = logic.polylux-slide({
+) = polylux.slide({
   // Background
   title-background
 
@@ -80,7 +81,7 @@
   place(rect(width: 100%, height: 12%, fill: palette.main))
   place(right, dx: -2%, dy: 1%, image(palette.header-logo, height: 10%))
   // Section name in header
-  place(dx: 2%, dy: 4.5%, text(size: 34pt, fill: white, utils.current-section))
+  place(dx: 2%, dy: 4.5%, text(size: 34pt, fill: white, toolbox.current-section))
 })
 
 #let footer = with-palette(palette => {
@@ -90,13 +91,14 @@
     bottom + right, dx: -2.5%, dy: -2.5%,
     text(
       size: 18pt,
-      fill: palette.main.lighten(50%),
-      logic.logical-slide.display("1 of 1", both: true)
-    )
+      fill: palette.main.lighten(50%)
+    )[
+      #toolbox.slide-number of #toolbox.last-slide-number
+    ]
   )
 })
 
-#let slide(title: none, body) = logic.polylux-slide({
+#let slide(title: none, body) = polylux.slide({
   header
   v(15%) // Space for header
   footer
@@ -117,9 +119,9 @@
   v(2fr)
 })
 
-#let new-section(title) = utils.register-section(title)
+#let new-section(title) = toolbox.register-section(title)
 
-#let new-section-slide(title) = logic.polylux-slide({
+#let new-section-slide(title) = polylux.slide({
   new-section(title)
   
   header
@@ -130,7 +132,7 @@
   heading(level: 2, titletext)
 })
 
-#let filled-slide(content) = logic.polylux-slide(with-palette(palette => {
+#let filled-slide(content) = polylux.slide(with-palette(palette => {
   set text(size: 44pt, fill: white)
   show: it => box(width: 100%, height: 100%, fill: palette.main, it)
   show: it => align(center + horizon, it)

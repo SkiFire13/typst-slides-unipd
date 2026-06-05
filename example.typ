@@ -1,4 +1,4 @@
-#import "@preview/polylux:0.3.1": *
+#import "@preview/polylux:0.4.0": *
 #import "unipd.typ": *
 
 #show: unipd-theme
