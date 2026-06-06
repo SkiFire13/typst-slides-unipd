@@ -5,6 +5,7 @@
   main: rgb(155, 0, 20),
   gray: rgb(72, 79, 89),
   light-gray: rgb(237, 237, 238),
+  font: "New Computer Modern Sans",
   header-logo: "logo_text_white.png",
   title-background: "bg.svg",
   background-logo: "logo_text.png",
@@ -27,7 +28,7 @@
   set page(paper: "presentation-" + aspect-ratio) if aspect-ratio != "16-9-extended"
   set page(width: 1058.27pt, height: 595.28pt) if aspect-ratio == "16-9-extended"
   
-  set text(font: "New Computer Modern Sans", size: 24pt)
+  set text(font: palette.font, size: 24pt)
   show heading.where(level: 2): set text(fill: palette.main)
   show heading.where(level: 2): it => it + v(1em)
   set list(marker: text("•", fill: palette.main.darken(20%)))

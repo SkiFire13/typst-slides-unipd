@@ -2,6 +2,8 @@
 #import "unipd.typ": *
 
 #show: unipd-theme
+// Or, if you want a different palette/font
+// #show: unipd-theme.with(palette: (:..unipd-palette, font: "Noto Sans Old"))
 
 #title-slide(
   authors: "Me and myself",
